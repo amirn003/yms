@@ -14,24 +14,38 @@
   padding: 20px;
   text-decoration: none;
   font-weight: bolder;
-  transition: transform 0.3s, color 0.3s;
-  color: black;
+  transition: transform 0.3s;
 }
 
 .side-navbar a {
   text-decoration: none;
   color: $dark-gray;
-
 }
 
 .fas {
   color: $dark-gray;
-
 }
 
 
 .side-navbar ul li:hover {
   transform: scale(1.05);
-  color: black;
+}
 
+.side-navbar ul li a {
+  text-decoration: none;
+  color: black;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.side-navbar ul li a:hover::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  /* Adjust as needed */
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: $coral;
+  /* Use the coral color variable */
 }
