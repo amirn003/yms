@@ -1,8 +1,11 @@
-table, th, td {
+table,
+th,
+td {
   border: 1px solid black;
 }
 
-th, td {
+th,
+td {
   text-align: center;
 }
 
@@ -13,4 +16,5 @@ table {
 .table-position {
   margin-top: 50px;
   margin-bottom: 15px;
+  margin-left: 50px;
 }
