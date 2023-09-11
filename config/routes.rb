@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   resources :yachts
-  # Defines the root path route ("/")
-  # root "articles#index"
+
+  get 'my_yachts', to: 'yachts#my_yachts'
 end
