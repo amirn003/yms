@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>List of Yachts</h1>
+
+    <div class="table-position">
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Number of Guests</th>
+          <th>Price</th>
+          <th>Location</th>
+          <th>Owner</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @yachts.each do |yacht| %>
+          <tr>
+            <td><%= yacht.name %></td>
+            <td><%= yacht.number_of_guests %></td>
+            <td><%= yacht.price %></td>
+            <td><%= yacht.location %></td>
+            <td><%= yacht.user.username %></td>
+            <td><%= yacht.user.email %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+
+    </div>
+  </div>
+</div>
