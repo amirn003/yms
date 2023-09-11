@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "logo2.png" %>
     <% end %>
 
@@ -12,7 +12,7 @@
             <%= current_user.email %>
           </span>
           <li class="nav-item">
-            <%= link_to "Features", "#", class: "nav-link" %>
+            <%= link_to "Features", yachts_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
             <%= link_to "Pricing", "#", class: "nav-link" %>
@@ -28,7 +28,7 @@
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
+              <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
               <%= button_to "Log out", destroy_user_session_path, method: :delete, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
