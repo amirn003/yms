@@ -7,6 +7,6 @@ class User < ApplicationRecord
   has_many :yachts
   has_many :bookings
 
-  validates :username, :email, uniqueness: true
-  validates :username, :email, presence: true
+  validates  :email, uniqueness: true
+  validates  :email, presence: true
 end

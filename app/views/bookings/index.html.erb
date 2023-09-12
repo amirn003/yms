@@ -1,0 +1,6 @@
+<p>All your bookings</p>
+
+<% @bookings.each do |booking| %>
+<%= booking.check_in %>
+<%= booking.check_out %>
+<% end %>
