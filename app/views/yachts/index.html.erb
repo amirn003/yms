@@ -28,6 +28,7 @@
               <td><%= yacht.user.username %></td>
               <td><%= yacht.user.email %></td>
             </tr>
+            <%= link_to "Create a reservation",new_booking_path, class:"btn_all" %>
           <% end %>
         </tbody>
       </table>

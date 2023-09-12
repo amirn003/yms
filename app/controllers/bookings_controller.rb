@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_flat, only: [:create, :destroy]
+  before_action :set_yacht, only: [:create, :destroy]
 
   def index
     @bookings = Booking.all
