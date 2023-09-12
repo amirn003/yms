@@ -2,12 +2,12 @@
   background-color: $blue;
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 10px 28px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 20px 2px;
+  margin-left: 20px;
   cursor: pointer;
   border-radius: 10px;
   transition: transform 0.2s;
@@ -22,52 +22,140 @@
 }
 
 .demo-btn {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
   letter-spacing: 0.25em;
-  margin: 0 auto;
-  padding: 1rem 2.5rem;
+  padding: 0.5rem 1rem;
   background: transparent;
   outline: none;
-  font-size: 28px;
+  font-size: 16px;
+  font-weight: bold;
   color: black;
+  z-index: 1;
 
-  &::after,
-  &::before {
-    content: "";
+  a {
+    color: white;
+    padding: $pad $extra;
+    display: inline-block;
+    border: $thick solid transparent;
+    position: relative;
+    font-size: 1.5em;
+    cursor: pointer;
+    letter-spacing: 0.07em;
+
+    .text {
+      font-family: $body-font;
+      transform: translate3d(0, $pad, 0);
+      display: block;
+      transition: transform 0.4s cubic-bezier(.2, 0, 0, 1) 0.4s;
+    }
+
+    &:after {
+      position: absolute;
+      content: '';
+      bottom: -$thick;
+      left: $extra;
+      right: $extra;
+      height: $thick;
+      background: $color;
+      // z-index: -1;
+      transition:
+        transform 0.8s cubic-bezier(1, 0, .37, 1) 0.2s,
+        right 0.2s cubic-bezier(.04, .48, 0, 1) 0.6s,
+        left 0.4s cubic-bezier(.04, .48, 0, 1) 0.6s;
+      transform-origin: left;
+    }
+
+  }
+
+  .line {
     position: absolute;
-    height: 100%;
-    width: 50%;
-    transform: skewX(30deg);
-    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    z-index: -2;
-  }
+    background: $color;
 
-  &::before {
-    background-color: $coral;
-    top: -1rem;
-    left: 0rem;
-  }
-
-  &::after {
-    background-color: $green;
-    top: 1rem;
-    left: 8rem;
-  }
-
-  &:hover {
-
-    &::before,
-    &::after {
-      top: 0;
-      transform: skewx(0deg);
+    &.-right,
+    &.-left {
+      width: $thick;
+      bottom: -$thick;
+      top: -$thick;
+      transform: scale3d(1, 0, 1);
     }
 
-    &::after {
-      left: 0rem;
+    &.-top,
+    &.-bottom {
+      height: $thick;
+      left: -$thick;
+      right: -$thick;
+      transform: scale3d(0, 1, 1);
     }
 
-    &::before {
-      left: 8.75rem;
+    &.-right {
+      right: -$thick;
+      transition: transform 0.1s cubic-bezier(1, 0, .65, 1.01) 0.23s;
+      transform-origin: top;
+    }
+
+    &.-top {
+      top: -$thick;
+      transition: transform 0.08s linear 0.43s;
+      transform-origin: left;
+    }
+
+    &.-left {
+      left: -$thick;
+      transition: transform 0.08s linear 0.51s;
+      transform-origin: bottom;
+    }
+
+    &.-bottom {
+      bottom: -$thick;
+      transition: transform 0.3s cubic-bezier(1, 0, .65, 1.01);
+      transform-origin: right;
+    }
+  }
+
+  a:hover,
+  a:active {
+
+    .text {
+      transform: translate3d(0, 0, 0);
+      transition: transform 0.6s cubic-bezier(.2, 0, 0, 1) 0.4s;
+    }
+
+    &:after {
+      transform: scale3d(0, 1, 1);
+      right: -$thick;
+      left: -$thick;
+      transform-origin: right;
+      transition:
+        transform 0.2s cubic-bezier(1, 0, .65, 1.01) 0.17s,
+        right 0.2s cubic-bezier(1, 0, .65, 1.01),
+        left 0s 0.3s;
+    }
+
+    .line {
+      transform: scale3d(1, 1, 1);
+
+      &.-right {
+        transition: transform 0.1s cubic-bezier(1, 0, .65, 1.01) 0.2s;
+        transform-origin: bottom;
+      }
+
+      &.-top {
+        transition: transform 0.08s linear 0.4s;
+        transform-origin: right;
+      }
+
+      &.-left {
+        transition: transform 0.08s linear 0.48s;
+        transform-origin: top;
+      }
+
+      &.-bottom {
+        transition: transform 0.5s cubic-bezier(0, .53, .29, 1) 0.56s;
+        transform-origin: left;
+      }
     }
   }
 }
