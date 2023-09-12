@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :yachts, :bookings
   # Defines the root path route ("/")
   # root "articles#index"
+
+  get 'my_yachts', to: 'yachts#my_yachts'
 end

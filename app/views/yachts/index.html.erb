@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>List of Yachts</h1>
+
+      <%= link_to "Filter My Yachts", my_yachts_path, class: "btn btn-primary" %>
+      <%= link_to "All Yachts", yachts_path, class: "btn btn-primary" %>
+
+      <div class="table-position">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Number of Guests</th>
+            <th>Price</th>
+            <th>Location</th>
+            <th>Owner</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @yachts.each do |yacht| %>
+            <tr>
+              <td> <%= link_to yacht.name, yacht_path(yacht) %></td>
+              <td><%= yacht.number_of_guests %></td>
+              <td><%= yacht.price %></td>
+              <td><%= yacht.location %></td>
+              <td><%= yacht.user.username %></td>
+              <td><%= yacht.user.email %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+
+    </div>
+  </div>
+</div>
