@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="row">
     <div class="col">
@@ -8,16 +7,19 @@
       <table>
         <thead>
           <tr>
-            <th>Check ins</th>
+            <th>Check in</th>
             <th>Check out</th>
-
+            <th>Total</th>
+            <th>Location</th>
           </tr>
         </thead>
         <tbody>
           <% @bookings.each do |booking| %>
             <tr>
-              <td> <%= @boooking.check_in %></td>
-              <td><%= @booking.check_out %></td>
+              <td> <%= boooking.check_in %></td>
+              <td><%= booking.check_out %></td>
+              <td><%= booking.total %></td>
+              <td><%= yacht.location %></td>
             </tr>
           <% end %>
         </tbody>
