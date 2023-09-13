@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.yacht = @yacht
     authorize @booking
-    authorize @flat
+    authorize @yacht
 
     if @booking.save!
       redirect_to bookings_path
@@ -45,7 +45,7 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:check_in, :check_out, :yacht_id)
+    params.require(:booking).permit(:check_in, :check_out, :yacht_id, :agency, :total)
   end
 
   def set_yacht

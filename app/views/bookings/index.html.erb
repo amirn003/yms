@@ -8,19 +8,16 @@
       <table>
         <thead>
           <tr>
-            <th>Check in</th>
+            <th>Check ins</th>
             <th>Check out</th>
-            <th>Total</th>
-            <th>Location</th>
+
           </tr>
         </thead>
         <tbody>
           <% @bookings.each do |booking| %>
             <tr>
-              <td> <%= boooking.check_in %></td>
-              <td><%= booking.check_out %></td>
-              <td><%= booking.total %></td>
-              <td><%= yacht.location %></td>
+              <td> <%= @boooking.check_in %></td>
+              <td><%= @booking.check_out %></td>
             </tr>
           <% end %>
         </tbody>
