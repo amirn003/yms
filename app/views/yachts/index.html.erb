@@ -15,8 +15,8 @@
     <div class="col-lg-9">
       <div class="table-position">
         <h1>List of Yachts</h1>
-        <%= link_to "Filter My Yachts", my_yachts_path, class: "btn btn-primary" %>
-        <%= link_to "All Yachts", yachts_path, class: "btn btn-primary" %>
+        <%= link_to "Filter My Yachts", my_yachts_path, class: "btn btn-primary mb-3" %>
+        <%= link_to "All Yachts", yachts_path, class: "btn btn-primary mb-3" %>
         <table>
           <thead>
             <tr>
@@ -41,6 +41,7 @@
             <% end %>
           </tbody>
         </table>
+        <%= link_to "Create a new yacht", new_yacht_path, class: "btn btn-primary mt-3" %>
       </div>
     </div>
   </div>
