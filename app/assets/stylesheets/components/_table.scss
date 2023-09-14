@@ -1,7 +1,7 @@
 table,
 th,
 td {
-  border: 1px solid black;
+  padding: 12px 15px;
 }
 
 th,
@@ -11,10 +11,61 @@ td {
 
 table {
   width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  font-family: $body-font;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
 .table-position {
   margin-top: 50px;
   margin-bottom: 15px;
   margin-left: 50px;
+}
+
+thead tr {
+  background-color: $coral;
+  color: black;
+  text-align: left;
+  color: black;
+}
+
+
+tbody tr:nth-of-type(even) {
+  background-color: #e2dfdf;
+  color: black;
+}
+
+
+tbody tr:hover {
+  border: 2px solid $coral;
+  background-color: #f9f7f7;
+}
+
+tbody tr:nth-of-type(even):hover {
+  background-color: #e2dfdf;
+}
+
+tbody tr:last-of-type:hover {
+  border-bottom: 2px solid $coral;
+}
+
+tbody {
+  color: black;
+}
+
+.yachts-table a {
+  text-decoration: none;
+  color: black;
+  font-family: $body-font;
+}
+
+.table-position h1 {
+  font-family: $headers-font;
+  color: black;
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 100px;
 }

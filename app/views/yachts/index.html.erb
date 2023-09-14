@@ -14,14 +14,16 @@
     </div>
     <div class="col-lg-9">
       <div class="table-position">
-        <h1>List of Yachts</h1>
-        <%= link_to "Filter My Yachts", my_yachts_path, class: "btn btn-primary mb-3" %>
-        <%= link_to "All Yachts", yachts_path, class: "btn btn-primary mb-3" %>
-        <table>
+        <h1>LIST OF YACHTS</h1>
+        <%= link_to "Filter My Yachts", my_yachts_path, class: "lrg-blue-btn" %>
+        <%= link_to "All Yachts", yachts_path, class: "lrg-blue-btn" %>
+        <table class="yachts-table">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Number of Guests</th>
+               <th class="sortable" data-sort-direction="asc">
+                Name
+              </th>
+              <th>Max number of people</th>
               <th>Price</th>
               <th>Location</th>
               <th>Owner</th>
@@ -41,8 +43,40 @@
             <% end %>
           </tbody>
         </table>
-        <%= link_to "Create a new yacht", new_yacht_path, class: "btn btn-primary mt-3" %>
+        <%= link_to "Create a new yacht", new_yacht_path, class: "lrg-blue-btn" %>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const table = document.querySelector(".yachts-table");
+    const headers = table.querySelectorAll("th");
+    const arrow = document.createElement("i");
+    arrow.classList.add("fas", "fa-sort");
+
+    headers.forEach((header, index) => {
+      if (index === 0) {
+        header.addEventListener("click", () => {
+          const isAscending = header.classList.contains("asc");
+          headers.forEach((h) => h.classList.remove("asc", "desc"));
+          header.classList.add(isAscending ? "desc" : "asc");
+
+          const multiplier = isAscending ? 1 : -1;
+          const rows = Array.from(table.querySelectorAll("tbody tr"));
+
+          rows.sort((a, b) => {
+            const aValue = a.cells[0].textContent.trim().toLowerCase();
+            const bValue = b.cells[0].textContent.trim().toLowerCase();
+            return aValue.localeCompare(bValue) * multiplier;
+          });
+
+          rows.forEach((row) => table.querySelector("tbody").appendChild(row));
+        });
+
+        header.appendChild(arrow.cloneNode(true));
+      }
+    });
+  });
+</script>
