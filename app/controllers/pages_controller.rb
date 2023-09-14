@@ -5,6 +5,7 @@ class PagesController < ApplicationController
   end
 
   def incomes
-
+    @bookings = Booking.all
+    @yachts = Yacht.all
   end
 end
