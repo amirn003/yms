@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_yacht, only: [:create, :destroy]
+  before_action :set_yacht, only: [:new, :create]
 
   def index
     @bookings = Booking.all
@@ -13,8 +13,8 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.yacht = @yacht
-    authorize @booking
-    authorize @yacht
+    # authorize @booking
+    # authorize @yacht
 
     if @booking.save!
       redirect_to bookings_path
@@ -24,28 +24,32 @@ class BookingsController < ApplicationController
   end
 
   def edit
-    authorize @booking
+    # authorize @booking
+    @booking = Booking.find(params[:id])
+
   end
 
 
   def update
-    authorize @yacht
+    # authorize @yacht
+    @booking = Booking.find(params[:id])
     if @booking.update(booking_params)
-      redirect_to booking_path(@booking), notice: 'Upadated successfully!', status: :see_other
+      redirect_to bookings_path, notice: 'Upadated successfully!', status: :see_other
     else
       render :edit
     end
   end
 
   def destroy
-    authorize @booking
+    # authorize @booking
+    @booking = Booking.find(params[:id])
     @booking.destroy
-    redirect_to root_path, notice: 'Booking was successfully destroyed!', status: :see_other
+    redirect_to bookings_path, notice: 'Booking was successfully destroyed!', status: :see_other
   end
   private
 
   def booking_params
-    params.require(:booking).permit(:check_in, :check_out, :yacht_id)
+    params.require(:booking).permit(:check_in, :check_out,:total,:agency, :yacht_id)
   end
 
   def set_yacht
