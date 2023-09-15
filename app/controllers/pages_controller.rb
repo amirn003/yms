@@ -3,4 +3,9 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def incomes
+    @bookings = Booking.all
+    @yachts = Yacht.all
+  end
 end
