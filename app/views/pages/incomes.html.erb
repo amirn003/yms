@@ -22,11 +22,11 @@
         <p>Price by Cities: </p>
           <div class="col-lg-6">
             <p>Mine: </p>
-            <%= bar_chart Yacht.where(user: current_user).group(:location).sum(:price) %>
+            <%= bar_chart Yacht.where(user: current_user).group(:location).average(:price) %>
           </div>
           <div class="col-lg-6">
             <p>All: </p>
-            <%= bar_chart Yacht.group(:location).sum(:price) %>
+            <%= bar_chart Yacht.group(:location).average(:price) %>
           </div>
 
         </div>
