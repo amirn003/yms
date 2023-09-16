@@ -49,11 +49,11 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:check_in, :check_out,:total,:agency, :yacht_id)
+    params.require(:booking).permit(:check_in, :check_out,:total,:agency)
   end
 
   def set_yacht
-    @yacht = Yacht.find(params[:yacht_id])
+    @yacht = Yacht.find(params[:id])
   end
 
 end
