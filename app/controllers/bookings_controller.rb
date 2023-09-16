@@ -3,21 +3,26 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = Booking.all
+    @incomes = Income.all
   end
 
   def new
     @booking = Booking.new
+
   end
 
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.yacht = @yacht
-    # authorize @booking
-    # authorize @yacht
+
+
+
 
     if @booking.save!
       redirect_to bookings_path
+      amount = @booking.yacht.price * (@booking.check_out - @booking.check_in).to_i
+      Income.create(amount: amount, date: Date.today, booking: @booking, user: current_user)
     else
       render :new, status: :unprocessable_entity
     end
