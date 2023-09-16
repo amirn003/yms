@@ -14,40 +14,55 @@
       </div>
     </div>
 
+
+
+
     <div class="col-lg-9">
       <div class="incomes">
+
         <h1 class="mb-5">Business Analysis</h1>
+
+
+        <div class="row">
+          <div class="col-lg-6">
+            <p>Mine</p>
+          </div>
+          <div class="col-lg-6">
+            <p>All</p>
+          </div>
+        </div>
 
         <div class="row">
         <p>Price by Cities: </p>
           <div class="col-lg-6">
-            <p>Mine: </p>
+
             <%= bar_chart Yacht.where(user: current_user).group(:location).average(:price) %>
           </div>
           <div class="col-lg-6">
-            <p>All: </p>
             <%= bar_chart Yacht.group(:location).average(:price) %>
           </div>
-
         </div>
 
+        <div class="row">
         <p>Yachts Location: </p>
-        <%= pie_chart Yacht.group(:location).count %>
+          <div class="col-lg-6">
+            <%= pie_chart Yacht.where(user: current_user).group(:location).count %>
+          </div>
+          <div class="col-lg-6">
+            <%= pie_chart Yacht.group(:location).count %>
+          </div>
+        </div>
 
-        <p>Location of My Yachts: </p>
-        <%= pie_chart Yacht.where(user: current_user).group(:location).count %>
-
-
-
-
-        <%# <%= line_chart Yacht.group_by_day(:created_at).count, legend: "bottom", label: "Yachts number" %>
-
+        <div class="row">
         <p>Number of guest repartition: </p>
-        <%= line_chart Yacht.group(:number_of_guests).count %>
-
+          <div class="col-lg-6">
+            <%= line_chart Yacht.where(user: current_user).group(:number_of_guests).count %>
+          </div>
+          <div class="col-lg-6">
+            <%= line_chart Yacht.group(:number_of_guests).count %>
+          </div>
+        </div>
       </div>
-
-
 
     </div>
   </div>
