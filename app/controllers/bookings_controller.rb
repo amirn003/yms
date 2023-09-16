@@ -53,7 +53,7 @@ class BookingsController < ApplicationController
   end
 
   def set_yacht
-    @yacht = Yacht.find(params[:id])
+    @yacht = Yacht.find(params[:yacht_id])
   end
 
 end
