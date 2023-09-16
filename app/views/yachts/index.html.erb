@@ -29,6 +29,7 @@
               <th>Location</th>
               <th>Owner</th>
               <th>Email</th>
+              <th>      </th>
             </tr>
           </thead>
           <tbody>
@@ -40,6 +41,7 @@
                 <td><%= yacht.location %></td>
                 <td><%= yacht.user.username %></td>
                 <td><%= yacht.user.email %></td>
+                <td><%= link_to "Book", new_yacht_booking_path(yacht), class: "lrg-blue-btn"%></td>
               </tr>
             <% end %>
           </tbody>
