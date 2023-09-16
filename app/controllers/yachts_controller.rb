@@ -12,7 +12,7 @@ class YachtsController < ApplicationController
     @yacht = Yacht.new(yacht_params)
     @yacht.user = current_user
     if @yacht.save
-      redirect_to booking_path(@booking)
+      redirect_to yachts_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,6 +30,6 @@ class YachtsController < ApplicationController
   private
 
   def yacht_params
-    params.require(:yacht).permit(:name, :number_of_guests, :price, :location)
+    params.require(:yacht).permit(:id,:name, :number_of_guests, :price, :location)
   end
 end
