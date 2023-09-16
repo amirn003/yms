@@ -12,7 +12,7 @@ class YachtsController < ApplicationController
     @yacht = Yacht.new(yacht_params)
     @yacht.user = current_user
     if @yacht.save
-      redirect_to booking_path(@booking)
+      redirect_to yachts_path
     else
       render :new, status: :unprocessable_entity
     end
