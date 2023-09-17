@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   get 'income', to: 'pages#income'
   get 'calendar', to: 'pages#calendar'
 
-
   resources :yachts do
     resources :bookings, only:[:new,:create]
   end
