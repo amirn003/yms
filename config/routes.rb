@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get 'business', to: 'pages#business'
   get 'income', to: 'pages#income'
+  get 'calendar', to: 'pages#calendar'
 
 
   resources :yachts do
