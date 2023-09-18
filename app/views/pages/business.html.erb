@@ -1,69 +1,39 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-3">
-      <div class="side-navbar">
-        <ul>
-          <li><i class="fas fa-calendar"></i> <a href="#">Calendar</a></li>
-          <li><i class="fas fa-check"></i> <a href="#">Bookings</a></li>
-          <li><i class="fas fa-sailboat"></i> <a href="#">Yachts</a></li>
-          <li><i class="fa-solid fa-business-time"></i> <%= link_to "Business", business_path %> </li>
-          <li><i class="fas fa-dollar-sign"></i> <%= link_to "Income", income_path %> </li>
-          <li><i class="fas fa-map"></i> <a href="#">Tracker</a></li>
-          <li><i class="fas fa-envelope"></i> <a href="#">Inbox</a></li>
-        </ul>
-      </div>
-    </div>
+<div class="wrapper">
+  <div class="sidebar">
+    <ul>
+      <li><i class="fas fa-calendar"></i> <a href="#">Calendar</a></li>
+      <li><i class="fas fa-check"></i> <a href="<%= bookings_path %>">Bookings</a></li>
+      <li><i class="fas fa-sailboat"></i> <a href="<%= yachts_path %>">Yachts</a></li>
+      <li><i class="fa-solid fa-business-time"></i> <%= link_to "Business", business_path %> </li>
+      <li><i class="fas fa-dollar-sign"></i> <%= link_to "Income", income_path %> </li>
+      <li><i class="fas fa-map"></i> <a href="#">Tracker</a></li>
+      <li><i class="fas fa-envelope"></i> <a href="#">Inbox</a></li>
+    </ul>
+  </div>
+  <div class="main_content">
+      <h1>BUSINESS ANALYSIS</h1>
 
-
-
-
-    <div class="col-lg-9">
-      <div class="incomes">
-
-        <h1 class="mb-5">Business Analysis</h1>
-
-
-        <div class="row">
-          <div class="col-lg-6">
-            <p>Mine</p>
-          </div>
-          <div class="col-lg-6">
-            <p>All</p>
-          </div>
+      <div class="row">
+        <p>Price by Cities</p>
+        <div class="col-lg-6">
+          <p>Mine</p>
+          <%= bar_chart Yacht.where(user: current_user).group(:location).average(:price) %>
+        </div>
+        <div class="col-lg-6">
+          <p>All</p>
+          <%= bar_chart Yacht.group(:location).average(:price) %>
         </div>
 
-        <div class="row">
-        <p>Price by Cities: </p>
-          <div class="col-lg-6">
 
-            <%= bar_chart Yacht.where(user: current_user).group(:location).average(:price) %>
-          </div>
-          <div class="col-lg-6">
-            <%= bar_chart Yacht.group(:location).average(:price) %>
-          </div>
+        <p>Yachts Location</p>
+        <div class="col-lg-6">
+          <%= pie_chart Yacht.group(:location).count %>
         </div>
-
-        <div class="row">
-        <p>Yachts Location: </p>
-          <div class="col-lg-6">
-            <%= pie_chart Yacht.where(user: current_user).group(:location).count %>
-          </div>
-          <div class="col-lg-6">
-            <%= pie_chart Yacht.group(:location).count %>
-          </div>
+        <div class="col-lg-6">
+          <%= pie_chart Yacht.where(user: current_user).group(:location).count %>
         </div>
-
-        <div class="row">
-        <p>Number of guest repartition: </p>
-          <div class="col-lg-6">
-            <%= line_chart Yacht.where(user: current_user).group(:number_of_guests).count %>
-          </div>
-          <div class="col-lg-6">
-            <%= line_chart Yacht.group(:number_of_guests).count %>
-          </div>
-        </div>
-      </div>
-
-    </div>
+        <p>Number of guest repartition</p>
+        <%= line_chart Yacht.group(:number_of_guests).count %>
+         </div>
   </div>
 </div>

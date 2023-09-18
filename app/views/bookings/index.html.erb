@@ -1,54 +1,45 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-3">
-      <div class="side-navbar">
-        <ul>
-          <li><i class="fas fa-calendar"></i> <a href="#">Calendar</a></li>
-          <li><i class="fas fa-check"></i> <a href="#">Bookings</a></li>
-          <li><i class="fas fa-sailboat"></i> <a href="#">Yachts</a></li>
-          <li><i class="fa-solid fa-business-time"></i> <%= link_to "Business", business_path %> </li>
-
-          <li><i class="fas fa-dollar-sign"></i> <%= link_to "Income", income_path %> </li>
-          <li><i class="fas fa-map"></i> <a href="#">Tracker</a></li>
-          <li><i class="fas fa-envelope"></i> <a href="#">Inbox</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="col-lg-9">
-      <div class="table-position">
-      <h1>LIST OF BOOKINGS</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Check in</th>
+<div class="wrapper">
+  <div class="sidebar">
+    <ul>
+      <li><i class="fas fa-calendar"></i> <a href="#">Calendar</a></li>
+      <li><i class="fas fa-check"></i> <%= link_to "Bookings", bookings_path %></li>
+      <li><i class="fas fa-sailboat"></i> <%= link_to "Yachts", yachts_path %></li>
+      <li><i class="fa-solid fa-business-time"></i> <%= link_to "Business", business_path %> </li>
+      <li><i class="fas fa-dollar-sign"></i> <%= link_to "Income", income_path %> </li>
+      <li><i class="fas fa-map"></i> <a href="#">Tracker</a></li>
+      <li><i class="fas fa-envelope"></i> <a href="#">Inbox</a></li>
+    </ul>
+  </div>
+  <div class="main_content">
+    <h1>LIST OF BOOKINGS</h1>
+    <table class="yachts-table">
+      <thead>
+        <tr>
+          <th>Check in</th>
             <th>Check out</th>
             <th>Amount</th>
             <th>Location</th>
             <th>Agency</th>
             <th>Yacht name</th>
-            <th>      </th>
+            <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @bookings.each do |booking| %>
+          <tr>
+            <td><%= booking.check_in %></td>
+            <td><%= booking.check_out %></td>
+            <td><%= @incomes.find_by(booking_id: booking.id).amount %></td>
+            <td><%= booking.yacht.location %></td>
+            <td><%= booking.agency %></td>
+            <td><%= booking.yacht.name %></td>
+            <td>
+              <%= link_to "Edit", edit_booking_path(booking), class: "lrg-blue-btn" %>
+              <%= link_to "Delete",booking_path(booking),data: {turbo_method: "delete"}, class: "lrg-blue-btn" %>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          <% @bookings.each do |booking| %>
-            <tr>
-              <td> <%= booking.check_in %></td>
-              <td><%= booking.check_out %></td>
-              <td><%= @incomes.find_by(booking_id: booking.id).amount %></td>
-              <td><%= booking.yacht.location %></td>
-              <td><%= booking.agency %></td>
-              <td><%= booking.yacht.name %></td>
-              <td>
-                <%= link_to "Edit", edit_booking_path(booking), class: "lrg-blue-btn" %>
-                <%= link_to "Delete",booking_path(booking),data: {turbo_method: "delete"}, class: "lrg-blue-btn" %>
-              </td>
-            </tr>
-          <% end %>
+        <% end %>
         </tbody>
       </table>
-      </div>
-
-    </div>
   </div>
 </div>
