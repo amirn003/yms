@@ -1,12 +1,11 @@
-<<<<<<< HEAD
 <div class="wrapper">
   <div class="sidebar">
     <ul>
       <li><i class="fas fa-calendar"></i> <a href="#">Calendar</a></li>
       <li><i class="fas fa-check"></i> <%= link_to "Bookings", bookings_path %></li>
       <li><i class="fas fa-sailboat"></i> <%= link_to "Yachts", yachts_path %></li>
-      <li><i class="fa-solid fa-business-time"></i> <%= link_to "Business", incomes_path %> </li>
-      <li><i class="fas fa-dollar-sign"></i> <a href="#">Payments</a></li>
+      <li><i class="fa-solid fa-business-time"></i> <%= link_to "Business", business_path %> </li>
+      <li><i class="fas fa-dollar-sign"></i> <%= link_to "Income", income_path %> </li>
       <li><i class="fas fa-map"></i> <a href="#">Tracker</a></li>
       <li><i class="fas fa-envelope"></i> <a href="#">Inbox</a></li>
     </ul>
@@ -14,26 +13,6 @@
   <div class="main_content">
     <h1>LIST OF YACHTS</h1>
     <div class="button-container">
-=======
-<div class="container">
-  <div class="row">
-    <div class="col-lg-3">
-      <div class="side-navbar">
-        <ul>
-          <li><i class="fas fa-calendar"></i> <a href="#">Calendar</a></li>
-          <li><i class="fas fa-check"></i> <a href="#">Bookings</a></li>
-          <li><i class="fas fa-sailboat"></i> <a href="#">Yachts</a></li>
-          <li><i class="fa-solid fa-business-time"></i> <%= link_to "Business", business_path %> </li>
-          <li><i class="fas fa-dollar-sign"></i> <%= link_to "Income", income_path %> </li>
-          <li><i class="fas fa-map"></i> <a href="#">Tracker</a></li>
-          <li><i class="fas fa-envelope"></i> <a href="#">Inbox</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-lg-9">
-      <div class="table-position">
-        <h1>LIST OF YACHTS</h1>
->>>>>>> master
         <%= link_to "Filter My Yachts", my_yachts_path, class: "lrg-blue-btn" %>
         <%= link_to "All Yachts", yachts_path, class: "lrg-blue-btn" %>
         <%= link_to "Create a new yacht", new_yacht_path, class: "lrg-blue-btn" %>
