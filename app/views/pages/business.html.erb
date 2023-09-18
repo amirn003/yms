@@ -14,25 +14,26 @@
       <h1>BUSINESS ANALYSIS</h1>
 
       <div class="row">
-        <p>Price by Cities:</p>
+        <p>Price by Cities</p>
         <div class="col-lg-6">
-          <p>Mine:</p>
-          <%= bar_chart Yacht.where(user: current_user).group(:location).sum(:price) %>
+          <p>Mine</p>
+          <%= bar_chart Yacht.where(user: current_user).group(:location).average(:price) %>
         </div>
         <div class="col-lg-6">
-          <p>All:</p>
-          <%= bar_chart Yacht.group(:location).sum(:price) %>
+          <p>All</p>
+          <%= bar_chart Yacht.group(:location).average(:price) %>
         </div>
-      </div>
 
-      <p>Yachts Location:</p>
-      <%= pie_chart Yacht.group(:location).count %>
 
-      <p>Location of My Yachts:</p>
-      <%= pie_chart Yacht.where(user: current_user).group(:location).count %>
-
-      <p>Number of guest repartition:</p>
-      <%= line_chart Yacht.group(:number_of_guests).count %>
-
+        <p>Yachts Location</p>
+        <div class="col-lg-6">
+          <%= pie_chart Yacht.group(:location).count %>
+        </div>
+        <div class="col-lg-6">
+          <%= pie_chart Yacht.where(user: current_user).group(:location).count %>
+        </div>
+        <p>Number of guest repartition</p>
+        <%= line_chart Yacht.group(:number_of_guests).count %>
+         </div>
   </div>
 </div>
