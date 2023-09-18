@@ -1,7 +1,17 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <h1>Calendar</h1>
+<div class="wrapper">
+  <div class="sidebar">
+    <ul>
+      <li><i class="fas fa-calendar"></i> <%= link_to "Calendar", calendar_path %></li>
+      <li><i class="fas fa-check"></i> <%= link_to "Bookings", bookings_path %></li>
+      <li><i class="fas fa-sailboat"></i> <%= link_to "Yachts", yachts_path %></li>
+      <li><i class="fa-solid fa-business-time"></i> <%= link_to "Business", business_path %> </li>
+      <li><i class="fas fa-dollar-sign"></i> <%= link_to "Income", income_path %> </li>
+      <li><i class="fas fa-map"></i> <a href="#">Tracker</a></li>
+      <li><i class="fas fa-envelope"></i> <a href="#">Inbox</a></li>
+    </ul>
+  </div>
+    <div class="main_content">
+      <h1>CALENDAR</h1>
 
       <%# <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js'></script>
       <div id="calendar" data-controller="calendar" data-calendar-target="calendar">
