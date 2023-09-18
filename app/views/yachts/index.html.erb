@@ -1,31 +1,31 @@
-<div class="container">
-  <div class="row">
-    <div class="col-lg-3">
-      <div class="side-navbar">
-        <ul>
-          <li><i class="fas fa-calendar"></i> <a href="#">Calendar</a></li>
-          <li><i class="fas fa-check"></i> <a href="#">Bookings</a></li>
-          <li><i class="fas fa-sailboat"></i> <a href="#">Yachts</a></li>
-          <li><i class="fa-solid fa-business-time"></i> <%= link_to "Business", incomes_path %> </li>
-          <li><i class="fas fa-dollar-sign"></i> <a href="#">Payments</a></li>
-          <li><i class="fas fa-map"></i> <a href="#">Tracker</a></li>
-          <li><i class="fas fa-envelope"></i> <a href="#">Inbox</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-lg-9">
-      <div class="table-position">
-        <h1>LIST OF YACHTS</h1>
+<div class="wrapper">
+  <div class="sidebar">
+    <ul>
+      <li><i class="fas fa-calendar"></i> <a href="#">Calendar</a></li>
+      <li><i class="fas fa-check"></i> <%= link_to "Bookings", bookings_path %></li>
+      <li><i class="fas fa-sailboat"></i> <%= link_to "Yachts", yachts_path %></li>
+      <li><i class="fa-solid fa-business-time"></i> <%= link_to "Business", incomes_path %> </li>
+      <li><i class="fas fa-dollar-sign"></i> <a href="#">Payments</a></li>
+      <li><i class="fas fa-map"></i> <a href="#">Tracker</a></li>
+      <li><i class="fas fa-envelope"></i> <a href="#">Inbox</a></li>
+    </ul>
+  </div>
+  <div class="main_content">
+    <h1>LIST OF YACHTS</h1>
+    <div class="button-container">
         <%= link_to "Filter My Yachts", my_yachts_path, class: "lrg-blue-btn" %>
         <%= link_to "All Yachts", yachts_path, class: "lrg-blue-btn" %>
+        <%= link_to "Create a new yacht", new_yacht_path, class: "lrg-blue-btn" %>
+    </div>
+
         <table class="yachts-table">
           <thead>
             <tr>
                <th class="sortable" data-sort-direction="asc">
                 Name
               </th>
-              <th>Max number of people</th>
-              <th>Price</th>
+              <th>No. of people</th>
+              <th>Daily rate($)</th>
               <th>Location</th>
               <th>Owner</th>
               <th>Email</th>
@@ -43,41 +43,6 @@
               </tr>
             <% end %>
           </tbody>
-        </table>
-        <%= link_to "Create a new yacht", new_yacht_path, class: "lrg-blue-btn" %>
-      </div>
-    </div>
+
   </div>
 </div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const table = document.querySelector(".yachts-table");
-    const headers = table.querySelectorAll("th");
-    const arrow = document.createElement("i");
-    arrow.classList.add("fas", "fa-sort");
-
-    headers.forEach((header, index) => {
-      if (index === 0) {
-        header.addEventListener("click", () => {
-          const isAscending = header.classList.contains("asc");
-          headers.forEach((h) => h.classList.remove("asc", "desc"));
-          header.classList.add(isAscending ? "desc" : "asc");
-
-          const multiplier = isAscending ? 1 : -1;
-          const rows = Array.from(table.querySelectorAll("tbody tr"));
-
-          rows.sort((a, b) => {
-            const aValue = a.cells[0].textContent.trim().toLowerCase();
-            const bValue = b.cells[0].textContent.trim().toLowerCase();
-            return aValue.localeCompare(bValue) * multiplier;
-          });
-
-          rows.forEach((row) => table.querySelector("tbody").appendChild(row));
-        });
-
-        header.appendChild(arrow.cloneNode(true));
-      }
-    });
-  });
-</script>
