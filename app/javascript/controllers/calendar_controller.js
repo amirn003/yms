@@ -4,31 +4,29 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin, { Draggable } from '@fullcalendar/interaction';
 
 // Connects to data-controller="calendar"
+
+
 export default class extends Controller {
-  static targets = ["calendar"];
+  static targets = ["calendar", "draggableEl"];
 
   connect() {
+    console.log("CALENDAR TARGET", this.calendarTarget)
+    console.log("DRAGGABLE", this.draggableEl)
 
-    console.log(this.calendarTarget)
-
-    document.addEventListener('DOMContentLoaded', function() {
-      let draggableEl = document.getElementById('mydraggable');
-      let calendarEl = document.getElementById('calendar');
-
-      const calendar = new FullCalendar.Calendar(calendarEl, {
-        // initialView: 'timeGridDay' #listWeek
-        plugins: [ interactionPlugin ],
-        droppable: true,
-        initialView: 'dayGridMonth'
-      });
-      calendar.render();
-
-      new Draggable(draggableEl, {
-        eventData: {
-          title: 'my event',
-          duration: '02:00'
-        }
-      });
+    const calendar = new Calendar(this.calendarTarget, {
+      schedulerLicenseKey: 'CC-Attribution-NonCommercial-NoDerivatives',
+      plugins: [interactionPlugin, dayGridPlugin],
+      droppable: true,
+      initialView: "dayGridMonth",
     });
+
+    new Draggable(this.draggableElTarget, {
+      eventData: {
+        title: "my event",
+        duration: "02:00",
+      },
+    });
+
+    calendar.render();
   }
 }
