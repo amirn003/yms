@@ -16,5 +16,13 @@ class PagesController < ApplicationController
   end
 
   def calendar
+      # Scope your query to the dates being shown:
+    start_date = if params.has_key?(:start_date)
+                   Date.parse(params.fetch(:start_date))
+                 else
+                   Date.today
+                 end
+      # For a monthly view:
+    @bookings = Booking.where(check_in: start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
   end
 end
