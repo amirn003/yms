@@ -27,10 +27,10 @@
 
         <p>Yachts Location</p>
         <div class="col-lg-6">
-          <%= pie_chart Yacht.group(:location).count %>
+          <%= pie_chart Yacht.where(user: current_user).group(:location).count %>
         </div>
         <div class="col-lg-6">
-          <%= pie_chart Yacht.where(user: current_user).group(:location).count %>
+          <%= pie_chart Yacht.group(:location).count %>
         </div>
         <p>Number of guest repartition</p>
         <%= line_chart Yacht.group(:number_of_guests).count %>
