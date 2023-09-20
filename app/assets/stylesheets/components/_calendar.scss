@@ -1,22 +1,41 @@
-.simple-calendar {
-  table {
-    min-height: 80vh;
-  }
-
-  .today {
-    background-color: #FAF3DD;
-  }
-}
-
 .meeting {
-  color: white;
+  color: black;
   padding: 8px 24px;
   border-radius: 4px;
-  background: #1EDD88;
+  background: $green;
   transition: background 0.3s ease;
 }
 
 .meeting:hover {
-  background: #1BCB7F;
-  color: white;
+  background: #9ace7d;
+
+}
+
+.simple-calendar {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.simple-calendar table {
+  flex-grow: 1;
+  border: 1px solid black;
+}
+
+
+.simple-calendar table .today {
+  background: #fe7e6d17;
+}
+
+.simple-calendar table th,
+.simple-calendar table td {
+  color: black;
+
+}
+
+
+.simple-calendar table td:hover {
+  border: 2px solid $coral;
 }

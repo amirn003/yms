@@ -25,7 +25,7 @@ table {
   margin-left: 50px;
 }
 
-thead tr {
+.yachts-table thead tr {
   background-color: $coral;
   color: black;
   text-align: left;
@@ -33,26 +33,26 @@ thead tr {
 }
 
 
-tbody tr:nth-of-type(even) {
+.yachts-table tbody tr:nth-of-type(even) {
   background-color: #e2dfdf;
   color: black;
 }
 
 
-tbody tr:hover {
+.yachts-table tbody tr:hover {
   border: 2px solid $coral;
   background-color: #f9f7f7;
 }
 
-tbody tr:nth-of-type(even):hover {
+.yachts-table tbody tr:nth-of-type(even):hover {
   background-color: #e2dfdf;
 }
 
-tbody tr:last-of-type:hover {
+.yachts-table tbody tr:last-of-type:hover {
   border-bottom: 2px solid $coral;
 }
 
-tbody {
+.yachts-table tbody {
   color: black;
 }
 
