@@ -29,7 +29,11 @@
           <tr>
             <td><%= booking.check_in %></td>
             <td><%= booking.check_out %></td>
-            <td><%= @incomes.find_by(booking_id: booking.id).amount %></td>
+            <% if @incomes.find_by(booking_id: booking.id).present? %>
+              <td><%= @incomes.find_by(booking_id: booking.id).amount %></td>
+            <% else %>
+              <td> - </td>
+            <% end %>
             <td><%= booking.yacht.location %></td>
             <td><%= booking.agency %></td>
             <td><%= booking.yacht.name %></td>
