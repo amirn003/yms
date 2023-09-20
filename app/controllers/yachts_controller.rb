@@ -7,12 +7,16 @@ class YachtsController < ApplicationController
   end
 
   def tracker
-    @yachts = Yacht.all
+    @yachts = Yacht.where(user: current_user)
 
     @markers = @yachts.geocoded.map do |yacht|
       {
         lat: yacht.latitude,
-        lng: yacht.longitude
+        lng: yacht.longitude,
+        location: yacht.location,
+        info_window_html: render_to_string(partial: "info_window", locals: {yacht: yacht}),
+        marker_html: render_to_string(partial: "markers", locals: {yacht: yacht}),
+        marker_html2: render_to_string(partial: "markers2", locals: {yacht: yacht})
       }
     end
   end
