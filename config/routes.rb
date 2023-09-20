@@ -9,5 +9,6 @@ Rails.application.routes.draw do
     resources :bookings, only:[:new,:create]
   end
   get 'my_yachts', to: 'yachts#my_yachts'
+  get 'tracker', to: 'yachts#tracker'
   resources :bookings ,only: [:edit,:destroy,:update,:index]
 end

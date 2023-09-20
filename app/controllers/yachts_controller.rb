@@ -6,6 +6,17 @@ class YachtsController < ApplicationController
     @yachts = Yacht.all
   end
 
+  def tracker
+    @yachts = Yacht.all
+
+    @markers = @yachts.geocoded.map do |yacht|
+      {
+        lat: yacht.latitude,
+        lng: yacht.longitude
+      }
+    end
+  end
+
   def new
     @yacht = Yacht.new
   end
