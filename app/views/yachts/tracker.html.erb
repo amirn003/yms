@@ -1,6 +1,21 @@
-<h1>Tracker</h1>
+<div class="wrapper">
+  <div class="sidebar">
+    <ul>
+      <li><i class="fas fa-calendar"></i> <%= link_to "Calendar", calendar_path %></li>
+      <li><i class="fas fa-check"></i> <%= link_to "Bookings", bookings_path %></li>
+      <li><i class="fas fa-sailboat"></i> <%= link_to "Yachts", yachts_path %></li>
+      <li><i class="fa-solid fa-business-time"></i> <%= link_to "Business", business_path %> </li>
+      <li><i class="fas fa-dollar-sign"></i> <%= link_to "Income", income_path %> </li>
+      <li><i class="fas fa-map"></i> <a href="#">Tracker</a></li>
+      <li><i class="fas fa-envelope"></i> <a href="#">Inbox</a></li>
+    </ul>
+  </div>
+  <div class="main_content">
+    <h1>TRACKER</h1>
+    <div style="width: 80%; height: 600px;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
-<div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">Hello</div>
+  </div>
+</div>
