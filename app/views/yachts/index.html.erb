@@ -42,7 +42,7 @@
                 <td><%= yacht.user.username %></td>
                 <td><%= yacht.user.email %></td>
                 <% if yacht.user.id == current_user.id %>
-                  <td><%= link_to "Book", new_yacht_booking_path(yacht), class: "lrg-blue-btn"%></td>
+                  <td><%= link_to "BOOK", new_yacht_booking_path(yacht), class: "lrg-blue-btn"%></td>
                 <% else %>
                   <td> </td>
                 <% end %>
