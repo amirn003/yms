@@ -12,18 +12,24 @@
 }
 
 .simple-calendar {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 200%;
   display: flex;
   flex-direction: column;
+
+
 }
 
 
 .simple-calendar table {
   flex-grow: 1;
   border: 1px solid black;
+  border-radius: 20px;
 }
 
+.simple-calendar table thead {
+  background-color: $coral;
+}
 
 .simple-calendar table .today {
   background: #fe7e6d17;
