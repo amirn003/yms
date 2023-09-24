@@ -3,53 +3,41 @@
   <div class="main_content">
     <h1>INCOME SUMMARY</h1>
 
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <h2 class="card-title">Weekly Income</h2>
-              <p class="card-text">Total Income for This Week:</p>
-              <h3 class="card-amount">$<%= @weekly_income %></h3>
+      <div class="grid-income">
+        <div class="card1">
+          <div class="card-body">
+            <h2 class="card-title">Weekly Income</h2>
+            <p class="card-text">Total Income for This Week:</p>
+            <h3 class="card-amount">$<%= @weekly_income %></h3>
               <%# <%= bar_chart Income.where(user: current_user).group("DATE_TRUNC('week', date)").sum(:amount) %>
-            </div>
           </div>
         </div>
 
-
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <h2 class="card-title">Monthly Income</h2>
-              <p class="card-text">Total Income for This Month:</p>
-              <h3 class="card-amount">$<%= @monthly_income %></h3>
+        <div class="card2">
+          <div class="card-body">
+            <h2 class="card-title">Monthly Income</h2>
+            <p class="card-text">Total Income for This Month:</p>
+            <h3 class="card-amount">$<%= @monthly_income %></h3>
               <%# <%= bar_chart Income.where(user: current_user).group("DATE_TRUNC('month', date)").sum(:amount) %>
-            </div>
           </div>
         </div>
 
-        <div class="col-md-4">
-          <div class="card">
-            <div class="card-body">
-              <h2 class="card-title">Yearly Income</h2>
-              <p class="card-text">Total Income for This Year:</p>
-              <h3 class="card-amount">$<%= @yearly_income %></h3>
+        <div class="card3">
+          <div class="card-body">
+            <h2 class="card-title">Yearly Income</h2>
+            <p class="card-text">Total Income for This Year:</p>
+            <h3 class="card-amount">$<%= @yearly_income %></h3>
               <%# <%= bar_chart Income.where(user: current_user).group("DATE_TRUNC('year', date)").sum(:amount) %>
             </div>
           </div>
+
+        <div class="card4">
+          <%= line_chart Income.where(user: current_user).group(:date).sum(:amount), colors: ["#18B0FF"] %>
         </div>
 
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-12 col-md-8 chart-container">
-              <%= line_chart Income.where(user: current_user).group(:date).sum(:amount) %>
-            </div>
-          </div>
-        </div>
 
 
 
       </div>
-    </div>
-
   </div>
 </div>
