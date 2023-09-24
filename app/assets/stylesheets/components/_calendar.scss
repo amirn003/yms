@@ -27,8 +27,8 @@
   border-radius: 20px;
 }
 
-thead {
-  background-color: $coral;
+.simple-calendar th {
+  background-color: $coral !important;
 }
 
 .simple-calendar table .today {
