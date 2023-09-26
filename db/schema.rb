@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_20_124817) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_25_182217) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -26,6 +26,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_20_124817) do
     t.index ["yacht_id"], name: "index_bookings_on_yacht_id"
   end
 
+  create_table "chatrooms", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "incomes", force: :cascade do |t|
     t.integer "amount"
     t.bigint "booking_id", null: false
@@ -35,6 +41,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_20_124817) do
     t.date "date"
     t.index ["booking_id"], name: "index_incomes_on_booking_id"
     t.index ["user_id"], name: "index_incomes_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "content"
+    t.bigint "chatroom_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -67,5 +83,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_20_124817) do
   add_foreign_key "bookings", "yachts"
   add_foreign_key "incomes", "bookings"
   add_foreign_key "incomes", "users"
+  add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "users"
   add_foreign_key "yachts", "users"
 end
