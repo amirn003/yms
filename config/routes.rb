@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :yachts do
     resources :bookings, only:[:new,:create]
   end
-  resources :chatrooms, only: [:show,:index] do
+  resources :chatrooms, only: [:show,:index,:new,:create] do
     resources :messages, only: :create
   end
   get 'my_yachts', to: 'yachts#my_yachts'

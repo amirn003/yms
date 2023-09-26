@@ -1,4 +1,6 @@
 <h1>Chatrooms</h1>
+<%= link_to "Create Chatroom", new_chatroom_path, class: "lrg-blue-btn" %>
 <% @chatrooms.each do |chatroom| %>
-  <%= chatroom.name %>
+  <%= chatroom.name.capitalize %>
+  <%= link_to "Enter", chatroom_path(chatroom), class: "lrg-blue-btn" %>
 <% end %>
