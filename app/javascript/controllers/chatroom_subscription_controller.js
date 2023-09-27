@@ -8,6 +8,7 @@ export default class extends Controller {
   connect() {
     console.log(`Subscribe to the chatroom with the id ${this.chatroomIdValue}.`)
   }
+
 connect() {
   this.channel = createConsumer().subscriptions.create(
     { channel: "ChatroomChannel", id: this.chatroomIdValue },
@@ -15,6 +16,7 @@ connect() {
   )
   console.log(`Subscribed to the chatroom with the id ${this.chatroomIdValue}.`)
 };
+
 #insertMessageAndScrollDown(data) {
   this.messagesTarget.insertAdjacentHTML("beforeend", data)
   this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
