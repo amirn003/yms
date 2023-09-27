@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   end
   get 'my_yachts', to: 'yachts#my_yachts'
   get 'tracker', to: 'yachts#tracker'
+  get 'tracker_move', to: 'yachts#tracker_move'
   resources :bookings ,only: [:edit,:destroy,:update,:index]
 end

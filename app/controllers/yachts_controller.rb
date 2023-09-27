@@ -1,24 +1,15 @@
 class YachtsController < ApplicationController
-
   before_action :set_yacht, only: [:edit, :update, :destroy, :show]
+  before_action :map_yacht, only: [:tracker, :tracker_move]
 
   def index
     @yachts = Yacht.all
   end
 
   def tracker
-    @yachts = Yacht.where(user: current_user)
+  end
 
-    @markers = @yachts.geocoded.map do |yacht|
-      {
-        lat: yacht.latitude,
-        lng: yacht.longitude,
-        location: yacht.location,
-        info_window_html: render_to_string(partial: "info_window", locals: {yacht: yacht}),
-        marker_html: render_to_string(partial: "markers", locals: {yacht: yacht}),
-        marker_html2: render_to_string(partial: "markers2", locals: {yacht: yacht})
-      }
-    end
+  def tracker_move
   end
 
   def new
@@ -68,5 +59,20 @@ class YachtsController < ApplicationController
 
   def set_yacht
     @yacht = Yacht.find(params[:id])
+  end
+
+  def map_yacht
+    @yachts = Yacht.where(user: current_user)
+
+    @markers = @yachts.geocoded.map do |yacht|
+      {
+        lat: yacht.latitude,
+        lng: yacht.longitude,
+        location: yacht.location,
+        info_window_html: render_to_string(partial: "info_window", locals: {yacht: yacht}),
+        marker_html: render_to_string(partial: "markers", locals: {yacht: yacht}),
+        marker_html2: render_to_string(partial: "markers2", locals: {yacht: yacht})
+      }
+    end
   end
 end
