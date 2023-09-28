@@ -6,15 +6,17 @@
     </div>
     <div class="home-header">The first property <br>management system <br> that floats</div>
     <div class="home-subheader">No more double-booking. Increased revenues. We organize your bookings for you. </div>
-    <div class="login">
-      <a href="/yachts">
-	      <span>
-		      Go to yachts
-	      </span>
-	      <div class="wave"></div>
-      </a>
+    <% if user_signed_in? %>
+      <div class="login">
+        <a href="/yachts">
+          <span>
+            Go to yachts
+          </span>
+          <div class="wave"></div>
+        </a>
 
-    </div>
+      </div>
+    <% end %>
   </div>
   <div class="home-img">
   </div>
