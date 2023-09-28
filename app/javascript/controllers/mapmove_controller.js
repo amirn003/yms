@@ -25,10 +25,17 @@ export default class extends Controller {
 
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl }))
+
+
+  }
+
+  dragend() {
+    console.log("Here is the dragen event")
   }
 
   #addMarkersToMap() {
     this.markersValue.forEach((marker, index) => {
+      console.log(marker)
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
 
       // Create a HTML element for your custom marker
@@ -54,7 +61,10 @@ export default class extends Controller {
         .setPopup(popup)
         //.setPitchAlignment('map')
         .addTo(this.map)
+
+
     })
+
   }
 
   #fitMapToMarkers() {
