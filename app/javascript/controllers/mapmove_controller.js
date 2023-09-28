@@ -33,7 +33,7 @@ export default class extends Controller {
 
       // Create a HTML element for your custom marker
       const customMarker = document.createElement("div")
-      customMarker.innerHTML = marker.marker_html
+      customMarker.innerHTML = marker.marker_html2
       // if (index % 2 === 0) {
       //   customMarker.innerHTML = marker.marker_html
       // } else {
@@ -42,12 +42,12 @@ export default class extends Controller {
 
       const offset = index * 2;
 
-      console.log(marker.lng, marker.lat, marker.location)
-      console.log(offset)
+      //console.log(marker.lng, marker.lat, marker.location)
+      //console.log(offset)
 
       // Pass the element as an argument to the new marker
       new mapboxgl.Marker(customMarker, {
-          //draggable: true,
+          draggable: true,
           //offset: [0, offset],
           occludedOpacity: 0.5
         }).setLngLat([marker.lng, marker.lat])
