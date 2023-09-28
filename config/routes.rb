@@ -11,6 +11,13 @@ Rails.application.routes.draw do
   resources :chatrooms, only: [:show,:index,:new,:create] do
     resources :messages, only: :create
   end
+
+  resources :crew do
+    member do
+      post 'assign_user' # Route pour assigner un utilisateur à un groupe
+    end
+  end
+
   get 'my_yachts', to: 'yachts#my_yachts'
   get 'tracker', to: 'yachts#tracker'
   get 'tracker_move', to: 'yachts#tracker_move'
