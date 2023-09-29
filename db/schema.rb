@@ -32,17 +32,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_29_093157) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "crews", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "crews_users", id: false, force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.bigint "crew_id", null: false
-  end
-
   create_table "incomes", force: :cascade do |t|
     t.integer "amount"
     t.bigint "booking_id", null: false
