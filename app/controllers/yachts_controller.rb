@@ -1,9 +1,14 @@
 class YachtsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_yacht, only: [:edit, :update, :destroy, :show]
   before_action :map_yacht, only: [:tracker, :tracker_move]
 
   def index
-    @yachts = Yacht.all
+    if current_user.crew.present?
+      @yachts = Yacht.joins(:user).where(users: { crew: current_user.crew })
+    else
+      @yachts = Yacht.where(user: current_user)
+    end
   end
 
   def tracker
