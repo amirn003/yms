@@ -1,6 +1,21 @@
 <h1>Chatrooms</h1>
 <%= link_to "Create Chatroom", new_chatroom_path, class: "lrg-blue-btn" %>
-<% @chatrooms.each do |chatroom| %>
-  <%= chatroom.name.capitalize %>
-  <%= link_to "Enter", chatroom_path(chatroom), class: "lrg-blue-btn" %>
-<% end %>
+<div class ="cr_center" , style = "position:relative; left:70px;">
+ <table class="yachts-table">
+      <thead>
+        <tr>
+          <th>Chatroom For</th>
+            <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @chatrooms.each do |chatroom| %>
+          <tr>
+            <td><%= chatroom.name %></td>
+            <td><%= link_to "Enter", chatroom_path(chatroom), class: "lrg-blue-btn" %></td>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+</div>
