@@ -11,19 +11,17 @@
           <span class="navbar-text text-dark" style="margin-right: 15px;">
             <%= current_user.email %>
           </span>
-          <li class="nav-item">
-            <%= link_to "Your Yachts", my_yachts_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Pricing", "#", class: "nav-link" %>
-          </li>
-
 
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "avatar.jpeg", class: "avatar", alt: "dropdown menu" %>
+            <% if current_user.photo.key %>
+              <%= cl_image_tag current_user.photo.key, class: "avatar", crop: :fill %>
+            <% else %>
+              <%= image_tag "avatar.jpeg", class: "avatar", alt: "dropdown menu" %>
+            <% end %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Yours Yachts", my_yachts_path, class: "dropdown-item" %>
               <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
               <%= button_to "Log out", destroy_user_session_path, method: :delete, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>

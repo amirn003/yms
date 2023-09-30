@@ -12,15 +12,27 @@ puts 'Destroying Bookings...'
 Booking.destroy_all
 puts 'Destroying Yachts...'
 Yacht.destroy_all
+puts 'Destroying Messages...'
+Message.destroy_all
+puts 'Destroying Chatroom...'
+Chatroom.destroy_all
 puts 'Destroying Users...'
 User.destroy_all
 
 
 
+
 puts 'Creating Users...'
 user1 = User.new(username: "jack", email: "jack@sparrow.com", crew: "Caribbean Sea Cie", password:"123456")
+user1.photo.attach(io: File.open('app/assets/images/jack-sparrow.png'), filename: "jack-sparrow.png", key: "8x3bjo19f5zvycvnvj3zt9g0pw9j")
+
 user2 = User.new(username: "elizabeth", email: "elizabeth@swann.com", crew: "Caribbean Sea Cie" , password:"123456")
+user2.photo.attach(io: File.open('app/assets/images/elizabeth-swann.png'), filename: "elizabeth-swann.png", key: "e5154up0treqga78g5nu1zw4elbd")
+
 user3 = User.new(username: "william", email: "william@turner.com", crew: "Caribbean Sea Cie" , password:"123456")
+user3.photo.attach(io: File.open('app/assets/images/william-turner.png'), filename: "william-turner.png", key: "j1cjzmj2vvxbn9cvrhte")
+
+
 user1.save!
 user2.save!
 user3.save!
