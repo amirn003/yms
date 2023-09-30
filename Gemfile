@@ -10,6 +10,7 @@ gem "faker"
 gem "chartkick"
 gem "groupdate"
 gem "geocoder"
+gem "cloudinary"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
