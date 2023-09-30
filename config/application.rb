@@ -1,7 +1,7 @@
 require_relative "boot"
 
 require "rails/all"
-config.exceptions_app = self.routes
+
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
@@ -15,6 +15,8 @@ module Yms
     end
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+
+    config.exceptions_app = self.routes
 
     # Configuration for the application, engines, and railties goes here.
     #
