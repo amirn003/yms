@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get 'business', to: 'pages#business'
   get 'income', to: 'pages#income'
   get 'calendar', to: 'pages#calendar'
-
+  get '/404', to: 'errors#not_found'
+  get '/500', to: 'errors#internal_server'
+  get '/422', to: 'errors#unprocessable'
   resources :yachts do
     resources :bookings, only:[:new,:create]
   end
