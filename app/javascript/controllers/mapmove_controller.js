@@ -25,36 +25,60 @@ export default class extends Controller {
 
     this.map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
       mapboxgl: mapboxgl }))
+
   }
 
+
   #addMarkersToMap() {
+    function onDragEnd() {
+      const lngLat = this.getLngLat();
+      console.log("Marker: ", this.yachtId);
+      console.log(`Longitude: ${lngLat.lng} | Latitude: ${lngLat.lat}`);
+
+      const csrfToken = document.querySelector("[name='csrf-token']").content
+      fetch(`yachts/${this.yachtId}/update_location`, {
+        method: "PATCH",
+        credentials: 'same-origin',
+        headers: {"Content-Type": "application/json",
+                  'X-CSRF-Token': csrfToken
+        },
+        body: JSON.stringify({yacht: {longitude: lngLat.lng, latitude: lngLat.lat}})
+      })
+        .then(response => response.json())
+        .then((data) => {
+          console.log(data)
+
+        })
+
+    }
     this.markersValue.forEach((marker, index) => {
+      //console.log(marker)
       const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
 
       // Create a HTML element for your custom marker
       const customMarker = document.createElement("div")
       customMarker.innerHTML = marker.marker_html2
-      // if (index % 2 === 0) {
-      //   customMarker.innerHTML = marker.marker_html
-      // } else {
-      //   customMarker.innerHTML = marker.marker_html2
-      // }
 
       const offset = index * 2;
 
-      //console.log(marker.lng, marker.lat, marker.location)
-      //console.log(offset)
-
       // Pass the element as an argument to the new marker
-      new mapboxgl.Marker(customMarker, {
-          draggable: true,
-          //offset: [0, offset],
-          occludedOpacity: 0.5
-        }).setLngLat([marker.lng, marker.lat])
-        .setPopup(popup)
-        //.setPitchAlignment('map')
-        .addTo(this.map)
+      const markerTemp = new mapboxgl.Marker(customMarker, {
+        draggable: true,
+        //offset: [0, offset],
+        occludedOpacity: 0.5,
+      }).setLngLat([marker.lng, marker.lat])
+      .setPopup(popup)
+      //.setPitchAlignment('map')
+      .addTo(this.map)
+
+      console.log("MARKERTEMP: ", markerTemp);
+      console.log("MARKER ID: ", marker.id);
+      console.log("MARKER LOCATION: ", marker.location);
+      markerTemp.yachtId = marker.id;
+      markerTemp.on('dragend', onDragEnd);
+
     })
+
   }
 
   #fitMapToMarkers() {

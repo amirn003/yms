@@ -2,11 +2,21 @@
   <%= render "shared/side-bar" %>
   <div class="main_content">
     <h1>Move Your Yachts</h1>
-    <%= link_to "Go back to Tracker", tracker_path, class: "lrg-blue-btn mb-3" %>
+    <div class="row d-flex justify-content-between">
+      <div class="col-6">
+        <%= link_to "Go back to Tracker", tracker_path, class: "lrg-blue-btn mb-3" %>
+      </div>
+      <div class="col-6">
+        <%= link_to "Refresh Your Map", tracker_move_path, class: "lrg-blue-btn mb-3" %>
+      </div>
+    </div>
     <div style="width: 80%; height: 600px;"
       data-controller="mapmove"
       data-mapmove-markers-value="<%= @markers.to_json %>"
-      data-mapmove-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+      data-mapmove-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+    >
+    </div>
+
 
   </div>
 </div>

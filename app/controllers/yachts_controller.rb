@@ -34,6 +34,30 @@ class YachtsController < ApplicationController
   def edit
   end
 
+  def update_location
+    yacht = Yacht.find(params[:id])
+    latitude = location_params[:latitude]
+    longitude = location_params[:longitude]
+    yacht.update(location_params)
+    location_result = Geocoder.search([latitude, longitude]).first
+
+    if location_result && location_result.city.present?
+      render json: { message: location_result.city}
+      yacht.update(location: location_result.city)
+      #redirect_to tracker_move_path
+    else
+      render json: { message: "Unable to determine city from coordinates."}
+      yacht.update(location: "Offshore")
+    end
+
+
+
+    #location = Geocoder.search([48.856614, 2.3522219]).first.city
+    #yacht.update(location: location)
+    #render json: {message: location}
+    #render json: {message: "Hello"}
+  end
+
   def update
     @yacht.user = current_user
     if @yacht.update(yacht_params)
@@ -58,6 +82,10 @@ class YachtsController < ApplicationController
 
   private
 
+  def location_params
+    params.require(:yacht).permit(:latitude, :longitude)
+  end
+
   def yacht_params
     params.require(:yacht).permit(:id,:name, :number_of_guests, :price, :location)
   end
@@ -74,6 +102,7 @@ class YachtsController < ApplicationController
         lat: yacht.latitude,
         lng: yacht.longitude,
         location: yacht.location,
+        id: yacht.id,
         info_window_html: render_to_string(partial: "info_window", locals: {yacht: yacht}),
         marker_html: render_to_string(partial: "markers", locals: {yacht: yacht}),
         marker_html2: render_to_string(partial: "markers2", locals: {yacht: yacht})
