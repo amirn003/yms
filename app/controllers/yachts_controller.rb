@@ -80,6 +80,11 @@ class YachtsController < ApplicationController
   def show
   end
 
+
+  def your_crew
+    @users = User.all
+  end
+
   private
 
   def location_params
