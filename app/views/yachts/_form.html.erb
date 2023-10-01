@@ -2,11 +2,11 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs" style="width: 1200px;">
-    <%= f.input :name %>
-    <%= f.input :number_of_guests %>
-    <%= f.input :price %>
-    <%= f.input :location %>
+  <div class="form-inputs" style="width: 1000px;">
+    <%= f.input :name, placeholder: "Enter yacht name" %>
+    <%= f.input :number_of_guests, placeholder: "Enter max boat capacity" %>
+    <%= f.input :price, placeholder: "Enter price per day" %>
+    <%= f.input :location, placeholder: "Enter town/city" %>
   </div>
 
   <div class="form-actions">
