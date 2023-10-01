@@ -49,13 +49,6 @@ class YachtsController < ApplicationController
       render json: { message: "Unable to determine city from coordinates."}
       yacht.update(location: "Offshore")
     end
-
-
-
-    #location = Geocoder.search([48.856614, 2.3522219]).first.city
-    #yacht.update(location: location)
-    #render json: {message: location}
-    #render json: {message: "Hello"}
   end
 
   def update
