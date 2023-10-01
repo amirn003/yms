@@ -2,12 +2,15 @@
   <%= render "shared/side-bar" %>
   <div class="main_content">
     <h1>Your crew</h1>
-    <% @users.each do |user| %>
-      <% if  user.crew == current_user.crew %>
-        <h3><%= user.email %></h3>
-        <%= cl_image_tag user.photo.key, height: 300, width: 400, crop: :fill %>
+    <h2><%= current_user.crew %></h2>
+    <div class="crew-flex">
+      <% @users.each do |user| %>
+        <% if  user.crew == current_user.crew %>
+          <%= cl_image_tag user.photo.key, height: 300, width: 400, crop: :fill %>
+          <h4><%= user.username.capitalize %></h4>
+          <p><%= user.email %></p>
+        <% end %>
       <% end %>
-
-    <% end %>
+    </div>
   </div>
 </div>
