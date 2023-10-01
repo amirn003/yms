@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :messages, only: :create
   end
   get 'my_yachts', to: 'yachts#my_yachts'
+  get 'your_crew', to: 'yachts#your_crew'
   patch 'yachts/:id/update_location', to: 'yachts#update_location'
   get 'tracker', to: 'yachts#tracker'
   get 'tracker_move', to: 'yachts#tracker_move'

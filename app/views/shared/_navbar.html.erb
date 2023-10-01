@@ -21,8 +21,9 @@
             <% end %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Yours Yachts", my_yachts_path, class: "dropdown-item" %>
-              <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
+              <%= link_to "Your crew", your_crew_path, class: "dropdown-item" %>
+              <%= link_to "Yours yachts", my_yachts_path, class: "dropdown-item" %>
+              <%= link_to "Edit your profile", edit_user_registration_path, class: "dropdown-item" %>
               <%= button_to "Log out", destroy_user_session_path, method: :delete, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
