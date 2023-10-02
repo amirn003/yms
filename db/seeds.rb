@@ -22,13 +22,13 @@ User.destroy_all
 
 puts 'Creating Users...'
 user1 = User.new(username: "jack", email: "jack@sparrow.com", crew: "Caribbean Sea Cie", password:"123456")
-user1.photo.attach(io: File.open('app/assets/images/jack-sparrow.png'), filename: "jack-sparrow.png", key: "8x3bjo19f5zvycvnvj3zt9g0pw9j")
+# user1.photo.attach(io: File.open('app/assets/images/jack-sparrow.png'), filename: "jack-sparrow.png", key: "8x3bjo19f5zvycvnvj3zt9g0pw9j")
 
 user2 = User.new(username: "elizabeth", email: "elizabeth@swann.com", crew: "Caribbean Sea Cie" , password:"123456")
-user2.photo.attach(io: File.open('app/assets/images/elizabeth-swann.png'), filename: "elizabeth-swann.png", key: "e5154up0treqga78g5nu1zw4elbd")
+# user2.photo.attach(io: File.open('app/assets/images/elizabeth-swann.png'), filename: "elizabeth-swann.png", key: "e5154up0treqga78g5nu1zw4elbd")
 
 user3 = User.new(username: "william", email: "william@turner.com", crew: "Caribbean Sea Cie" , password:"123456")
-user3.photo.attach(io: File.open('app/assets/images/william-turner.png'), filename: "william-turner.png", key: "j1cjzmj2vvxbn9cvrhte")
+# user3.photo.attach(io: File.open('app/assets/images/william-turner.png'), filename: "william-turner.png", key: "j1cjzmj2vvxbn9cvrhte")
 
 
 user1.save!
