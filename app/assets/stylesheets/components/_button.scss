@@ -91,3 +91,31 @@ a:active .wave {
     background-position-x: 118px;
   }
 }
+
+.form-actions .btn {
+  border: solid 2px black;
+  color: black;
+  padding: 10px 28px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  margin-left: 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: transform 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 20px;
+  margin-left: 0;
+  width: 100%;
+}
+
+
+.form-actions .btn:hover {
+  text-decoration: none;
+  background-color: $blue;
+  color: white;
+  font-weight: bold;
+
+}

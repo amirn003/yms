@@ -16,9 +16,10 @@
   width: 120px;
   height: 100vh;
   background: $light-blue;
-  padding: 30px 0px;
-  position: fixed;
+  padding: 0px;
+  position: sticky;
   padding-left: 0;
+  top: 0;
 }
 
 .wrapper .sidebar ul {
@@ -54,10 +55,10 @@
 
 
 
-.wrapper .main_content {
-  width: 100%;
-  margin-left: 120px;
-}
+// .wrapper .main_content {
+//   width: 100%;
+//   // margin-left: 120px;
+// }
 
 .main_content h1 {
   font-family: $headers-font;
@@ -70,11 +71,11 @@
 
 .main_content {
   width: 100%;
-  margin-left: 150px;
+  // margin-left: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   overflow: hidden;
 }
 

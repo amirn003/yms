@@ -1,4 +1,7 @@
-<div class="container chatroom"
+<div class="wrapper">
+<%= render "shared/side-bar" %>
+  <div class="main_content">
+    <div class="container chatroom" style= "height: 90%; margin-top:100px"
   data-controller="chatroom-subscription"
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
 >
@@ -23,6 +26,9 @@
           placeholder: "Message ##{@chatroom.name}",
           wrapper_html: {class: "flex-grow-1"}
         %>
-        <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+        <%= f.submit "Send", class: "lrg-blue-btn" %>
       <% end %>
     </div>
+
+  </div>
+</div>
