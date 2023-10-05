@@ -13,7 +13,7 @@
 }
 
 .wrapper .sidebar {
-  width: 150px;
+  width: 180px;
   height: 100vh;
   background: $light-blue;
   padding: 0px;
@@ -28,7 +28,7 @@
 }
 
 .wrapper .sidebar ul li {
-  padding: 15px;
+  padding: 22%;
   border-bottom: 1px solid #d2dce7;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
@@ -37,7 +37,7 @@
   color: black;
   display: block;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 16px;
   letter-spacing: 1px;
 }
 
