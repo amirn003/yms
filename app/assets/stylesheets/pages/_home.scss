@@ -39,13 +39,50 @@
 .logo {
   height: 100px;
   width: auto;
-
 }
 
 .login {
   display: flex;
   align-items: flex-start;
   margin-top: 100px;
+}
+
+@media only screen
+and (min-device-width : 320px)
+and (max-device-width : 480px) {
+    /* Styles */
+    .logo {
+      height: 75px;
+      width: auto;
+    }
+
+    .home-login {
+      flex: 1;
+      background-color: $light-blue;
+      padding: 5px;
+    }
+
+    .home-header {
+      font-family: $headers-font;
+      color: black;
+      font-weight: 600;
+      font-size: 3rem;
+      margin-top: 50px;
+      margin-bottom: 25px;
+
+    }
+
+    .home-subheader {
+      font-family: $body-font;
+      color: black;
+      font-weight: 300;
+    }
+
+    .login {
+      display: flex;
+      align-items: flex-start;
+      margin-top: 25px;
+    }
 }
 
 .login-field {
